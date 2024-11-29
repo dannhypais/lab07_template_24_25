@@ -154,22 +154,7 @@ public class UniversityNetwork extends Subject {
 
     }
 
-    public Person getMostPopular() {
-        if (network.numVertices() == 0) {
-            return null;
-        }
-        Vertex<Person> popular = null;
-        int max = -1;
-        for (Vertex<Person> vPerson : network.vertices()) {
-            int numberContacts = ((Collection) network.incidentEdges(vPerson)).size();
-            if (numberContacts > max) {
-                popular = vPerson;
-                max = numberContacts;
-            }
-        }
-        return popular.element();
-    }
-
+   
     public boolean personExists(String name) {
         for (Vertex<Person> v : network.vertices()) {
             if (v.element().getName() == name) {
@@ -180,20 +165,7 @@ public class UniversityNetwork extends Subject {
     }
 
 
-    public List<Person> getIsolated() {
-        List<Person> isolados = new ArrayList<>();
-        if (network.numVertices() == 0) {
-            return null;
-        }
-        for (Vertex<Person> vPerson : network.vertices()) {
-            int numberContacts = ((Collection) network.incidentEdges(vPerson)).size();
-            if (numberContacts == 0) {
-                isolados.add(vPerson.element());
-            }
-        }
-        return isolados;
-    }
-
+   
     public List<Relationship> getRelationShip(int id1, int id2) throws UniversityNetworkException {
         List<Relationship> relations = new ArrayList<>();
 
