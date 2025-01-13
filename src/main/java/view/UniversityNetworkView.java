@@ -63,7 +63,7 @@ public class UniversityNetworkView extends BorderPane implements UniversityNetwo
                 cbPersonId2.getItems().add( String.valueOf(p.getId()) );
             }
 
-            /* TODO Statistics */
+            /* TODO Statistics - 1*/
         }
     }
 
@@ -142,7 +142,7 @@ public class UniversityNetworkView extends BorderPane implements UniversityNetwo
 
     @Override
     public void clearControls() {
-        //TODO 1;
+        //TODO 2;
     }
 
     private void createLayout() {
