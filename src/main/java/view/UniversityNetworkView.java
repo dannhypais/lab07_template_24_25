@@ -64,6 +64,8 @@ public class UniversityNetworkView extends BorderPane implements UniversityNetwo
             }
 
             /* TODO Statistics - 1*/
+            lblPeopleCount.setText(String.valueOf(people.size()));
+            lblMostPopular.setText(String.valueOf(model.getMostPopularPerson()));
         }
     }
 

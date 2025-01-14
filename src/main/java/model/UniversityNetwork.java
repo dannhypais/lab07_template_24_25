@@ -190,4 +190,12 @@ public class UniversityNetwork extends Subject {
         return null;
     }
 
+    public Person getMostPopularPerson(){
+        Map<Person, Integer> personCount = new HashMap<>();
+        for(Vertex<Person> vertice: network.vertices()){
+            personCount.put(vertice.element(), network.incidentEdges(vertice).size());
+        }
+        return Collections.max(personCount.entrySet(), Map.Entry.<Person, Integer>comparingByValue()).getKey();
+    }
+
 }
