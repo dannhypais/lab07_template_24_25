@@ -145,6 +145,12 @@ public class UniversityNetworkView extends BorderPane implements UniversityNetwo
     @Override
     public void clearControls() {
         //TODO 2;
+        cbRoles.getSelectionModel().clearSelection();
+        cbPersonId1.getSelectionModel().clearSelection();
+        cbPersonId2.getSelectionModel().clearSelection();
+        txtPersonId.clear();
+        txtPersonName.clear();
+        txtRelationshipDescription.clear();
     }
 
     private void createLayout() {
