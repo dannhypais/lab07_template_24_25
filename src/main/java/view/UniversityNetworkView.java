@@ -18,6 +18,7 @@ import observerpattern.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author brunomnsilva
@@ -41,6 +42,7 @@ public class UniversityNetworkView extends BorderPane implements UniversityNetwo
     private TextField txtRelationshipDescription;
     private Label lblPeopleCount;
     private Label lblMostPopular;
+    private Label lblIsolatedPersons;
 
     public UniversityNetworkView(UniversityNetwork model) {
         this.model = model;
@@ -67,6 +69,14 @@ public class UniversityNetworkView extends BorderPane implements UniversityNetwo
             /* TODO Statistics - 1*/
             lblPeopleCount.setText(String.valueOf(people.size()));
             lblMostPopular.setText(String.valueOf(model.getMostPopularPerson()));
+            if(model.getIsolatedPersons().isEmpty() ){
+                lblIsolatedPersons.setText("No isolated Person");
+            } else{
+                String isolatedPersons = model.getIsolatedPersons().stream()
+                        .map(String::valueOf)
+                        .collect(Collectors.joining("\n"));
+                lblIsolatedPersons.setText(isolatedPersons);
+            }
         }
     }
 
@@ -259,9 +269,12 @@ public class UniversityNetworkView extends BorderPane implements UniversityNetwo
         labelCount.setStyle("-fx-font-weight: bold;");
         Label labelPopular = new Label("Most Popular Person: ");
         labelPopular.setStyle("-fx-font-weight: bold;");
+        Label labelIsolated = new Label("Isolated People: ");
+        labelIsolated.setStyle("-fx-font-weight: bold;");
         lblMostPopular = new Label("TODO");
         lblPeopleCount = new Label("TODO");
-        VBox statsPane = new VBox(labelCount, lblPeopleCount, labelPopular, lblMostPopular);
+        lblIsolatedPersons = new Label("TODO");
+        VBox statsPane = new VBox(labelCount, lblPeopleCount, labelPopular, lblMostPopular, labelIsolated, lblIsolatedPersons);
         statsPane.setSpacing(10);
 
         /* COMPOSE */

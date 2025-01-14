@@ -209,4 +209,13 @@ public class UniversityNetwork extends Subject {
         return Collections.max(personCount.entrySet(), Map.Entry.<Person, Integer>comparingByValue()).getKey();
     }
 
+    public List<Person> getIsolatedPersons(){
+        List<Person> isolatedPerson = new ArrayList<>();
+        for(Vertex<Person> person: network.vertices()){
+            if(network.incidentEdges(person).isEmpty()){
+                isolatedPerson.add(person.element());
+            }
+        }
+        return isolatedPerson;
+    }
 }
