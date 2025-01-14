@@ -1,5 +1,6 @@
 package controller;
 
+import model.Person;
 import model.UniversityNetwork;
 import model.UniversityNetworkException;
 import view.UniversityNetworkUI;
@@ -25,6 +26,29 @@ public class UniversityNetworkController {
 
     public void doAddPerson() {
         /* TODO - 3 */
+        try {
+            int id = Integer.parseInt(view.getIdPersonAdd());
+            String name = view.getNamePersonAdd();
+            Person.PersonRole role = Person.PersonRole.valueOf(view.getRolePersonAdd());
+
+            if(name.trim().isEmpty()) {
+                view.displayError("You must provide a name.");
+                return;
+            }
+
+            model.addPerson(new Person(id, name, role));
+            view.clearError();
+            view.clearControls();
+
+        } catch (UniversityNetworkException e) {
+            view.displayError(e.getMessage());
+        } catch (NumberFormatException e) {
+            view.displayError("The ID must be an integer number.");
+        } catch (IllegalArgumentException e) {
+            view.displayError("Invalid role.");
+        } catch (NullPointerException e) {
+            view.displayError("The value must not be null.");
+        }
     }
 
     public void doAddClassRelationShip() {

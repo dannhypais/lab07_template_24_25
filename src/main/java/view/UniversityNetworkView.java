@@ -72,6 +72,10 @@ public class UniversityNetworkView extends BorderPane implements UniversityNetwo
     @Override
     public void setTriggers(UniversityNetworkController controller) {
 
+        btAddPerson.setOnAction(event -> {
+            controller.doAddPerson();
+        });
+
         btAddGroupRelationship.setOnAction(event -> {
             controller.doAddGroupRelationShip();
         });
