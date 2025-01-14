@@ -123,4 +123,19 @@ public class UniversityNetworkController {
             view.displayError("The ID must be an integer number.");
         }
     }
+
+    public void doRemovePerson() {
+        try {
+            int id = Integer.parseInt(view.getIdPersonAdd());
+
+            model.removePerson(id);
+            view.clearError();
+            view.clearControls();
+
+        } catch (UniversityNetworkException e) {
+            view.displayError( e.getMessage() );
+        } catch (NumberFormatException e2) {
+            view.displayError("The ID must be an integer number.");
+        }
+    }
 }

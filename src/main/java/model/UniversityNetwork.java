@@ -98,6 +98,17 @@ public class UniversityNetwork extends Subject {
         }
     }
 
+    public void removePerson(int id) throws UniversityNetworkException{
+            Vertex<Person> personToRemove = findPerson(id);
+            if (personToRemove == null) {
+                throw new UniversityNetworkException("Person with id " + id + " not found");
+            }
+            network.removeVertex(personToRemove);
+
+            notifyObservers(null);
+
+    }
+
     public Collection<Person> getPeople() {
         List<Person> people = new ArrayList<>();
 

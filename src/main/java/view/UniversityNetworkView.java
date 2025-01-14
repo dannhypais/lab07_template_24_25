@@ -31,6 +31,7 @@ public class UniversityNetworkView extends BorderPane implements UniversityNetwo
     private Button btAddGroupRelationship;
     private Button btAddClassRelationship;
     private Button btRemoveRelationship;
+    private Button btRemovePerson;
     private Label lblError;
     private ComboBox<String> cbRoles;
     private ComboBox<String> cbPersonId1;
@@ -93,6 +94,10 @@ public class UniversityNetworkView extends BorderPane implements UniversityNetwo
                 }
 
             });
+        });
+
+        btRemovePerson.setOnAction(event -> {
+            controller.doRemovePerson();
         });
     }
 
@@ -209,7 +214,10 @@ public class UniversityNetworkView extends BorderPane implements UniversityNetwo
         personPane.add(cbRoles, 1, 3);
 
         btAddPerson = new Button("Add");
+        btRemovePerson = new Button("Remove");
         personPane.add(btAddPerson, 1, 4);
+        btRemovePerson.setStyle("-fx-background-color: red; -fx-text-fill: white;");
+        personPane.add(btRemovePerson, 1, 5);
 
         /* Relationship Controls */
         GridPane relationPane = new GridPane();
